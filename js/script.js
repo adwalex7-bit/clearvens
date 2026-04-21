@@ -23,37 +23,3 @@ if (contactForm) {
         alert('Thank you for your message! We will get back to you soon.');
     });
 }
-
-// Video fallback handling
-document.querySelectorAll('.video-container').forEach(container => {
-    const iframe = container.querySelector('iframe');
-    const fallback = container.querySelector('.video-fallback');
-    
-    if (iframe && fallback) {
-        // Check if iframe loads successfully
-        let iframeLoaded = false;
-        
-        iframe.addEventListener('load', function() {
-            iframeLoaded = true;
-            if (fallback) {
-                fallback.style.display = 'none';
-            }
-        });
-        
-        // Set a timeout to show fallback if iframe doesn't load
-        setTimeout(() => {
-            if (!iframeLoaded) {
-                try {
-                    // Try to access iframe content (will fail if cross-origin)
-                    iframe.contentDocument;
-                    iframeLoaded = true;
-                } catch (e) {
-                    // Cross-origin or error - show fallback
-                    if (fallback) {
-                        fallback.style.display = 'flex';
-                    }
-                }
-            }
-        }, 3000);
-    }
-});
