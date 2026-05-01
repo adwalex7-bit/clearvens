@@ -15,11 +15,14 @@ document.querySelectorAll('.video-container video').forEach(video => {
     });
 });
 
-// Form submission (placeholder)
+// Form submission
 const contactForm = document.querySelector('.contact-form');
 if (contactForm) {
     contactForm.addEventListener('submit', function(e) {
-        e.preventDefault();
-        alert('Thank you for your message! We will get back to you soon.');
+        // Form will be submitted to Formspree which sends to Hendrickdariuss@gmail.com
+        // Show thank you message
+        setTimeout(function() {
+            alert('Thank you for your message! We will get back to you soon.');
+        }, 500);
     });
 }
